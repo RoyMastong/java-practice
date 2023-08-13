@@ -22,6 +22,8 @@ class JavaPracticeApplicationTests {
         String translatedText = transliterator.transliterate(sourceText);
 
         System.out.println("Translated text: " + translatedText);
+        var fdf = 4;
+
     }
 
 }
