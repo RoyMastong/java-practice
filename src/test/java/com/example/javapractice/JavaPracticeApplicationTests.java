@@ -131,4 +131,10 @@ class JavaPracticeApplicationTests {
 
     }
 
+    @Test
+    void testTranslate() throws Exception {
+
+    }
+
+
 }
