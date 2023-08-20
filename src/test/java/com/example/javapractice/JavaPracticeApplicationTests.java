@@ -155,7 +155,6 @@ class JavaPracticeApplicationTests {
             GT g = GT.getInstance();
             System.out.println(g.translateText(txt, "auto", "en"));
             System.out.println(g.translateText("谁能说支持不支持", "auto", "en"));
-
     }
 
 
