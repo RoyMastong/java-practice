@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.ibm.icu.text.CaseMap;
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.text.RuleBasedCollator;
-import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -326,7 +325,7 @@ class JavaPracticeApplicationTests {
                 if (null != LANGUAGE_MAP.get(desiredLang)) {
                     return desiredLang;
                 }
-                String tmp = desiredLang.toLowerCase();
+                var tmp = desiredLang.toLowerCase();
                 for (Map.Entry<String, String> enter : LANGUAGE_MAP.entrySet()) {
                     if (enter.getValue().equals(tmp)) {
                         return enter.getKey();
@@ -349,28 +348,27 @@ class JavaPracticeApplicationTests {
             public String translateText(String text, String sourceLang, String targetLang) throws Exception {
 
 
-                String retStr = "";
+                var retStr = "";
                 if (!(isSupport(sourceLang) || isSupport(targetLang))) {
                     throw new Exception("不支持的语言类型");
                 }
 
-                List<NameValuePair> nvps = new ArrayList();
+                var nvps = new ArrayList<NameValuePair>();
                 nvps.add(new BasicNameValuePair("client", CLIENT));
                 nvps.add(new BasicNameValuePair("sl", sourceLang));
                 nvps.add(new BasicNameValuePair("tl", targetLang));
                 nvps.add(new BasicNameValuePair("dt", "t"));
                 nvps.add(new BasicNameValuePair("q", text));
-//        String finalPath=PATH +"?client="+CLIENT+"&sl="+sourceLang+"&tl="+targetLang+"&dt=t&q="+ text ;
 
-                String resp = postHttp(PATH, nvps);
+                var resp = postHttp(PATH, nvps);
                 if (null == resp) {
                     throw new Exception("网络异常");
                 }
 
 
-                JSONArray jsonObject = JSONArray.parseArray(resp);
-                for (Iterator<Object> it = jsonObject.getJSONArray(0).iterator(); it.hasNext(); ) {
-                    JSONArray a = (JSONArray) it.next();
+                var jsonObject = JSONArray.parseArray(resp);
+                for (Object o : jsonObject.getJSONArray(0)) {
+                    JSONArray a = (JSONArray) o;
                     retStr += a.getString(0);
                 }
 
@@ -397,7 +395,7 @@ class JavaPracticeApplicationTests {
                     // 重要！！ 指定编码，对中文进行编码
                     httpPost.setEntity(new UrlEncodedFormEntity(nvps, Charset.forName("UTF-8")));
                     response2 = httpclient.execute(httpPost);
-                    HttpEntity entity2 = response2.getEntity();
+                    var entity2 = response2.getEntity();
                     responseStr = EntityUtils.toString(entity2);
                     EntityUtils.consume(entity2);
                 } catch (IOException e) {
