@@ -1,9 +1,9 @@
 package com.example.javapractice;
 
-import com.ibm.icu.text.*;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import com.alibaba.fastjson.JSONArray;
+import com.ibm.icu.text.CaseMap;
+import com.ibm.icu.text.Collator;
+import com.ibm.icu.text.RuleBasedCollator;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -13,6 +13,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -365,7 +367,6 @@ class JavaPracticeApplicationTests {
                     throw new Exception("网络异常");
                 }
 
-//        System.out.println( "==>返回内容：" + resp);
 
                 JSONArray jsonObject = JSONArray.parseArray(resp);
                 for (Iterator<Object> it = jsonObject.getJSONArray(0).iterator(); it.hasNext(); ) {
