@@ -18,7 +18,7 @@ import java.util.Properties;
 public class Pipeline {
 
     private static Properties properties;
-    private static String propertiesName = "tokenize,ssplit,pos,lemma,ner,parse,depparse,coref,kbp,quote";
+    private static String propertiesName = "tokenize,ssplit,pos,lemma,ner,parse,depparse,coref,kbp,quote,stem";
     private static StanfordCoreNLP stanfordCoreNLP;
 
     private Pipeline() {

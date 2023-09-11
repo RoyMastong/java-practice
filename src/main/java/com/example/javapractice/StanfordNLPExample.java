@@ -20,7 +20,7 @@ public class StanfordNLPExample {
         CoreDocument doc = new CoreDocument(text);
         // 处理文本
         stanfordCoreNLP.annotate(doc);
-        // 获取词干提取和词性还原的结果
+        // 获取词型还原的结果
         for (CoreLabel token : doc.tokens()) {
             String word = token.originalText(); // 原始词汇
             String lemma = token.lemma(); // 词型还原后的词汇
