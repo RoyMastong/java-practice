@@ -1,4 +1,4 @@
-package com.example.javapractice.demo01;
+package com.example.javapractice.multithread.demo01;
 
 import org.apache.commons.io.FileUtils;
 
